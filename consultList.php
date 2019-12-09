@@ -84,13 +84,31 @@ if ($err) {
 }
 
 $resultados=json_decode($response,true);
-
-print_r($resultados);
-foreach ($resultados as  $resul)
+$resultados2=array_chunk($resultados, 50);
+//print_r($resultados2);
+foreach ($resultados2 as  $resul)
 {
-    con
-    echo $resul['Identifier'];
-    echo '<br>';
+  /* print_r($resul); 
+
+  echo '<br>'; */
+
+  foreach ($resul as $rel){
+     echo $rel['Identifier'];
+    echo '<br>'; 
+  
+    $perso[]=$rel['Identifier'];
+
+    if ($rel=== end($resul)) {
+        echo "ÚLTIMO ELEMENTO".$rel['Identifier'];
+       // print_r($perso);
+       $separado_por_comas = implode(",", $perso);
+        echo   $separado_por_comas;  
+
+    }
+    
+  }
+  echo '<br>';
+  echo '<br>';
 }
 
 
